@@ -31,6 +31,10 @@ JSON mengusung format yang lebih terstruktur, memudahkan dalam pencarian dan pen
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
+Langkah pertama adalah membuat base.html sebagai kerangka umum dan menyisipkannya ke dalam templates. Kemudian, menambahkan struktur formulir untuk menerima data produk baru. Dibuat juga fungsi baru di dalam views.py, yaitu create product, yang akan menerima permintaan (request) sebagai parameter dan menghasilkan formulir untuk menambahkan data. Setelah itu, dilakukan penyesuaian pada fungsi "show_main" yang telah ada. Selanjutnya, ditambahkan rute baru untuk mengakses fungsi yang baru dibuat.
+
+Langkah berikutnya adalah membuat file HTML baru yang bertugas menampilkan formulir yang sudah dibuat, serta melakukan penyesuaian pada berkas main.html. Kemudian, diperluas dengan menambahkan fungsi-fungsi yang akan diimplementasikan dalam format XML dan JSON. Dilanjutkan dengan menambahkan rute baru untuk mengakses fungsi-fungsi tersebut. Setelah itu, diperlukan penambahan fungsi-fungsi untuk mengembalikan data berdasarkan ID dalam bentuk XML dan JSON. Terakhir, jalur-jalur baru ditambahkan pada berkas urls.py sesuai dengan fungsi-fungsi baru yang telah dibuat.
+
 
 SCREENSHOT POSTMAN
 <img src="/tgs3//1.jpg">
