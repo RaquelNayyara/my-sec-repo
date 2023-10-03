@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <style>
@@ -10,7 +12,7 @@
     form {
         max-width: 600px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 60px;
         background-color: #ED5C9B;
         color: #000;
         border-radius: 10px;
@@ -29,7 +31,7 @@
         width: calc(100% - 16px);
         padding: 8px;
         margin: 4px 0;
-        border: 1px solid #ccc;
+        border: 1px solid #000;
         border-radius: 4px;
         box-sizing: border-box;
     }
@@ -44,12 +46,12 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #F7B9D7;
-        color: #000;
+        background-color: #000;
+        color: #ED5C9B;
     }
 </style>
 
-<h1>Add New Product</h1>
+<h1>Edit Product</h1>
 
 <form method="POST">
     {% csrf_token %}
@@ -58,7 +60,7 @@
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Add Product"/>
+                <input type="submit" value="Edit Product"/>
             </td>
         </tr>
     </table>

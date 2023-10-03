@@ -1,31 +1,74 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-    <title>Register</title>
+    <title style="color: #ED5C9B;">Register</title>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login">
+<style>
+    body {
+        background-color: #000000;
+        color: #000;
+    }
+
+    .login {
+        background-color: #ED5C9B;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 800px;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .login h1 {
+        color: #000000;
+    }
+
+    input[type="submit"] {
+        background-color: #000;
+        color: #FACDE5;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #FACDE5;
+        color: #ED5C9B;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table tr td {
+        padding: 10px;
+    }
+</style>
+
+<div class="login">
     
     <h1>Register</h1>  
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
+    <form method="POST" >  
+        {% csrf_token %}  
+        <table>  
+            {{ form.as_table }}  
+            <tr>  
+                <td></td>
+                <td><input type="submit" name="submit" value="Daftar"/></td>  
+            </tr>  
+        </table>  
+    </form>
 
     {% if messages %}  
         <ul>   
             {% for message in messages %}  
                 <li>{{ message }}</li>  
-                {% endfor %}  
+            {% endfor %}  
         </ul>   
     {% endif %}
 
