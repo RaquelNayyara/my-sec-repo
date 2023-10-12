@@ -8,3 +8,5 @@ class Product(models.Model):
     date_added = models.DateField(auto_now_add=True)
     price = models.IntegerField()
     description = models.TextField()
+    image_url = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
