@@ -1,4 +1,4 @@
-TUGAS 6
+--- TUGAS 6 ---
 
 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
 
@@ -10,16 +10,19 @@ Dalam asynchronous programming, program tidak menunggu operasi untuk selesai. Se
 
 Paradigma Event-Driven Programming adalah pendekatan dalam pemrograman di mana alur eksekusi program ditentukan oleh kejadian atau peristiwa yang terjadi, bukan hanya urutan instruksi dalam kode program. Dalam konteks JavaScript dan penggunaan AJAX (Asynchronous JavaScript and XML) di aplikasi web, paradigma ini sangat relevan.
 
+Salah satu contoh paradigma event programming dan ajax adalah ketika kita membuat sebuah form yang dapat mengirim data ke server tanpa harus memuat ulang halaman web. Form ini dapat menggunakan XMLHttpRequest untuk mengirim permintaan dan menerima respons dari server secara asinkron. Form ini juga dapat menambahkan event listener pada elemen input atau tombol untuk menanggapi peristiwa seperti klik, tekan, atau ubah. Form ini dapat menampilkan hasil atau pesan dari server di elemen HTML tertentu.
+
 3. Jelaskan penerapan asynchronous programming pada AJAX.
 
-Asynchronous JavaScript and XML (AJAX) adalah teknik dalam pengembangan web yang memungkinkan pertukaran data antara browser dan server secara asinkron tanpa memuat ulang halaman secara keseluruhan. Asynchronous programming adalah kunci dari AJAX, karena memungkinkan aplikasi untuk tetap responsif sambil menunggu respons dari server.
-- Membuat Objek XMLHttpRequest:
-- Mengatur Fungsi Penangan Kejadian (Event Handler)
-- Membuka Koneksi (open())
-- Mengirim Request (send())
-- Menangani Respons dari Server
-- Menangani Kesalahan (Optional)
+Asynchronous programming dalam konteks AJAX adalah suatu metode yang memfasilitasi aplikasi web untuk berinteraksi dengan server tanpa harus menunggu respons. Pendekatan ini memungkinkan aplikasi web untuk beroperasi dengan lebih efisien dan tanggap, karena tidak perlu melakukan pengambilan ulang halaman web setiap kali ada permintaan data. Pada asynchronous programming dalam AJAX, JavaScript berperan sebagai bahasa pemrograman utama yang digunakan untuk mengirim dan menerima data dari server secara asinkron. Selain itu, JavaScript juga mampu mengubah antarmuka pengguna sesuai dengan data yang diterima atau dikirim, menciptakan pengalaman pengguna yang lebih dinamis dan interaktif.
 
 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
 
+- Fetch API adalah fitur bawaan dari browser modern, sedangkan jQuery adalah library eksternal yang harus diunduh dan dimuat terlebih dahulu. Ini berarti Fetch API lebih ringan dan tidak bergantung pada library lain, tetapi jQuery lebih kompatibel dengan browser lama yang belum mendukung Fetch API1.
+- Fetch API menggunakan konsep Promise untuk menangani respon asinkron, sedangkan jQuery menggunakan callback. Promise adalah cara yang lebih elegan dan mudah dibaca untuk menulis kode asinkron, karena menghindari masalah callback hell2. Namun, callback lebih fleksibel dan dapat digunakan untuk kasus-kasus yang lebih kompleks.
+- Fetch API membutuhkan lebih banyak kode untuk melakukan hal-hal sederhana, seperti mengirim data dalam format JSON atau menangani kesalahan HTTP. jQuery menyediakan metode yang lebih sederhana dan intuitif untuk melakukan hal-hal tersebut, seperti .ajax(),.getJSON (), atau $.post (). Namun, Fetch API memberikan lebih banyak kontrol dan fleksibilitas atas permintaan dan respon Ajax, seperti menambahkan header khusus atau mengubah mode kredensial.
+- Fetch API memiliki metode bawaan untuk mengubah respon menjadi berbagai tipe data, seperti text (), json (), blob (), atau formData (). jQuery juga dapat mengubah respon menjadi tipe data tertentu, tetapi harus ditentukan di awal dengan opsi dataType.
+
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+Pertama-tama saya menambahkan <div id="get_card" class="cardss" style="display: grid;grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 20px; margin: 40px; justify-content: center; justify-items: center; padding-bottom: 20px;"> untuk membuat cards pada main, setelah itu saya menambahkan image_url = models.TextField() pada models, lalu menambahkan fields dengan "image_url", lalu saya melakukan migrations. Setelah itu, membuat function get_product_json dan function add_product_ajax dengan parameter request di views dengan dekorator @csrf_exempt, tidak lupa juga import dan buat path nya. Setelah itu saya menggunakan fetch API ke data JSON lalu menggunakan fungsi then(). Setelah itu saya membuat fungsi refreshProducts(), async function refreshCards dan addProduct() di script pada main html, lalu tambahkan fungsi onclick. Setelah itu,saya membuat async function refreshCard, function addProduct, function deleteProduct pada main  html. Lalu saya membuat function delete_item_aja dengan parameter request dan id pada views, tidak lupa juga selalu menambahkan import dan path nya. Setelah itu saya mempercantik main.html dengan menambahkan gif pada background dan mengubah berbagai style lainnya.
