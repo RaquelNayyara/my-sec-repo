@@ -102,6 +102,10 @@
                             <label for="description" class="col-form-label">Description:</label>
                             <textarea class="form-control" id="description" name="description"></textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="image_url" class="col-form-label">Image URL:</label>
+                            <textarea class="form-control" id="image_url" name="image_url"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -136,13 +140,20 @@
             <td>${item.fields.date_added}</td>
             <td>
                 <button class="btn btn-primary" onclick="editProduct(${item.pk})">Edit</button>
-                <button class="btn btn-danger" onclick="deleteProduct(${item.pk})">Delete</button>
+                <button class="btn btn-danger" data-url="{% url 'main:delete_item_ajax' 123 %}" onclick="deleteProduct(this, ${item.pk})">Delete</button>
             </td>
         </tr>`
         })
 
         document.getElementById("product_table").innerHTML = htmlString
     }
+
+    function deleteProduct(button, id) {
+            let url = button.getAttribute('data-url').replace('123', id);
+            fetch(url, {
+                method: "DELETE",
+            }).then(refreshProducts).then(refreshCards)
+        }
 
     refreshProducts()
     
@@ -183,9 +194,6 @@
     window.location.href = `/edit-product/${pk}`;
     }
 
-    function deleteProduct(pk) {
-    window.location.href = `/delete/${pk}`;
-    }
 </script>
 
 {% endblock content %}

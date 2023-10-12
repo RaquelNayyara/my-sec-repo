@@ -16,7 +16,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseNotFound
-
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -127,12 +127,21 @@ def add_product_ajax(request):
         name = request.POST.get("name")
         price = request.POST.get("price")
         description = request.POST.get("description")
+        image_url = request.POST.get("image_url")
         user = request.user
         
-
-        new_product = Product(name=name, price=price, description=description, user=user)
+        new_product = Product(name=name, price=price, description=description, image_url=image_url, user=user)
         new_product.save()
+        
 
         return HttpResponse(b"CREATED", status=201)
 
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_item_ajax(request, id):
+    if request.method == 'DELETE':
+        product = get_object_or_404(Product, pk=id)
+        product.delete()
+        return HttpResponse(b"DELETED", status=200)
     return HttpResponseNotFound()
