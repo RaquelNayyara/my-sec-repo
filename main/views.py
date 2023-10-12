@@ -28,6 +28,7 @@ def show_main(request):
         'class': 'PBP F', # Kelas PBP kamu
         'products': products,
         'last_login': request.COOKIES['last_login'],
+        'total_products' : products.__len__()
     }
 
     return render(request, "main.html", context)
@@ -127,9 +128,9 @@ def add_product_ajax(request):
         price = request.POST.get("price")
         description = request.POST.get("description")
         user = request.user
-        image_url = request.POST.get("image_url")
+        
 
-        new_product = Product(name=name, price=price, description=description, user=user, image_url=image_url)
+        new_product = Product(name=name, price=price, description=description, user=user)
         new_product.save()
 
         return HttpResponse(b"CREATED", status=201)
